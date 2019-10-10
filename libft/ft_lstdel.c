@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/25 09:39:32 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/25 15:03:57 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	t_list	*tmp;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	while (*alst)
+	{
+		tmp = (*alst)->next;
+		ft_lstdelone(alst, del);
+		(*alst) = tmp;
+	}
 }

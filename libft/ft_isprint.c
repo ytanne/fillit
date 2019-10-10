@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/18 22:11:01 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/23 12:18:31 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	fillit(char *str)
+int		ft_isprint(int c)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
-
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
+	if (c > 31 && c < 127)
+		return (1);
 	return (0);
 }

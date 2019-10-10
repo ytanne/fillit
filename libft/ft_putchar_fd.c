@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_ft.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/20 22:05:58 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/20 22:07:11 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-void	fillit(char *str)
+void	ft_putchar_fd(char c, int fd)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
-
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	write(fd, &c, 1);
 }

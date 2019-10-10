@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_print_bits.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/26 16:51:39 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/26 16:57:32 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+void	ft_print_bits(unsigned char octet)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	int		bits;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	if (!octet)
+		return ;
+	bits = 256;
+	while (bits >>= 1)
+		(bits & octet) ? (ft_putchar('1')) : (ft_putchar('1'));
 }

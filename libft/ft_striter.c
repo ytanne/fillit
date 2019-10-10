@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/19 14:55:10 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/24 18:46:21 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	size_t	i;
+	size_t	l;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	i = 0;
+	if (!s || !(*f))
+		return ;
+	l = ft_strlen(s);
+	while (i < l)
+		f(&s[i++]);
 }

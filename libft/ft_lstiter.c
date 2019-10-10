@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/25 09:54:36 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/25 10:52:31 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	t_list	*tmp;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	tmp = lst;
+	while (tmp)
+	{
+		f(tmp);
+		tmp = tmp->next;
+	}
 }

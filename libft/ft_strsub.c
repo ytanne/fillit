@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/20 09:14:13 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/21 14:32:06 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	char	*r;
+	size_t	i;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	i = -1;
+	if (!s)
+		return (NULL);
+	r = ft_strnew(len);
+	if (!r)
+		return (NULL);
+	while (++i < len)
+		r[i] = s[start + i];
+	r[i] = '\0';
+	return (r);
 }

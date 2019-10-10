@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/18 19:15:10 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/26 17:13:33 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	size_t			i;
+	unsigned int	r;
+	unsigned char	*sc1;
+	unsigned char	*sc2;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	i = 0;
+	r = 0;
+	sc1 = (unsigned char *)s1;
+	sc2 = (unsigned char *)s2;
+	while (i < n && (sc1[i] || sc2[i]))
+	{
+		r = sc1[i] - sc2[i];
+		if (r != 0)
+			return ((int)r);
+		i++;
+	}
+	return (r);
 }

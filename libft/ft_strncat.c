@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/21 14:43:37 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/25 22:12:20 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	size_t	l[2];
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	l[0] = ft_strlen(s1);
+	l[1] = ft_strlen(s2);
+	if (ft_strlen(s2) < n)
+	{
+		ft_strncpy(s1 + l[0], s2, l[1]);
+		s1[l[0] + l[1]] = '\0';
+	}
+	else
+	{
+		ft_strncpy(s1 + l[0], s2, n);
+		s1[l[0] + n] = '\0';
+	}
+	return (s1);
 }

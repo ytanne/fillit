@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/20 12:12:44 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/24 19:03:26 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+char	*ft_strtrim(char const *s)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	size_t	i;
+	char	*r;
+	size_t	l;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t') && s[i] != '\0')
+		i++;
+	l = ft_strlen(s);
+	l--;
+	while ((s[l] == ' ' || s[l] == '\n' || s[l] == '\t') && l > i)
+		l--;
+	if (l == i)
+		return (ft_strnew(1));
+	r = ft_strnew(++l - i);
+	if (!r)
+		return (NULL);
+	r = ft_strsub(s, i, l - i);
+	return (r);
 }

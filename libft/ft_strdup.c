@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/17 12:12:22 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/10/10 10:57:38 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	fillit(char *str)
+char	*ft_strdup(const char *s1)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	char	*r;
+	size_t	i;
+	size_t	l;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	l = ft_strlen(s1);
+	r = ft_strnew(l);
+	if (!r)
+		return (NULL);
+	i = 0;
+	while (i < l)
+	{
+		r[i] = s1[i];
+		i++;
+	}
+	r[i] = '\0';
+	return (r);
 }

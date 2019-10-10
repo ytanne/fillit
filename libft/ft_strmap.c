@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/19 18:55:29 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/23 12:33:20 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	char	*s1;
+	size_t	i;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	i = -1;
+	if (!s || !f)
+		return (NULL);
+	if (!(s1 = ft_strnew(ft_strlen(s))))
+		return (NULL);
+	while (s[++i])
+		s1[i] = f(s[i]);
+	return (s1);
 }

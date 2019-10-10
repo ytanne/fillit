@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/09/19 22:37:19 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/24 18:51:51 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
-
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	if (!s1 || !s2 || !n)
+		return (1);
+	if (ft_strncmp(s1, s2, n) != 0)
+		return (0);
+	else
+		return (1);
 }

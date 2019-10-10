@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/10 10:50:58 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/08/12 11:35:23 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/09/27 14:01:52 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	fillit(char *str)
+int		ft_atoi(char *s)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+	long	prv;
+	long	n;
+	int		sign;
 
-int		main(int ac, char **av)
-{
-	if (ac == 2)
-		fillit(av[1]);
-	return (0);
+	n = 0;
+	while ((*s >= 9 && *s <= 13) || (*s == 32))
+		s++;
+	sign = 1;
+	if (*s == '-')
+		sign = -1;
+	if (*s == '+' || *s == '-')
+		s++;
+	while (*s >= '0' && *s <= '9')
+	{
+		prv = n;
+		n = n * 10 + (*s++ - '0');
+		if (prv > n)
+		{
+			if (sign == 1)
+				return (-1);
+			return (0);
+		}
+	}
+	return ((int)(n * sign));
 }
