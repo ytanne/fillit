@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/12 23:33:32 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/13 01:39:10 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,42 @@
 #include "get_next_line.h"
 #include "fillit.h"
 
-int		*get_x_coord(char *line)
+void	get_x_coord(char *line)
 {
-	int		i;
-	
-	i = -1;
-	while (++i < 4)
+	int		xy[2];
+	int		j;
+	int		k;
+	int		coords[4][2];
+
+	xy[0] = 0;
+	xy[1] = 0;
+	j = 0;
+	k = -1;
+	while (line[++k])
 	{
-		if (line[i] == '#')
-			while
+		if (line[k] == '#')
+		{
+			coords[j][0] = xy[0];
+			coords[j++][1] = xy[1];
+		}
+		if (line[k] == '\n')
+		{
+			xy[0] = 0;
+			xy[1]++;
+		}
+		else
+			xy[0]++;
+	}
+	k = -1;
+	while (++k < 4)
+	{
+		ft_putstr("x: ");
+		ft_putnbr(coords[k][0]);
+		ft_putstr("; ");
+		ft_putstr("y: ");
+		ft_putnbr(coords[k][1]);
+		ft_putchar('\n');
+	}
 }
 
 void	dimensions(char	*line, int counter)
@@ -52,16 +79,29 @@ static int		get_tet(char *file_name)
 {
 	int		fd;
 	char	*line;
-	t_list	*tetris;
+	char	*tetstr;
 	int		count;
 
 	count = 0;
-	tetris = NULL;
 	fd = open(file_name, O_RDONLY);
+	tetstr = ft_strnew(18);
+	//ft_strclr(tetstr);
 	while (get_next_line(fd, &line) > 0)
 	{
 		dimensions(line, count++);
+		ft_strcat(tetstr, line);
+		if (count < 4)
+			tetstr[5*(count - 1) + 4] = '\n';
+		else
+		{
+			tetstr[5*(count - 1) + 4] = '\0';
+			count = 0;
+		}
 	}
+	ft_putstr("Obtained tetstr is: \n");
+	ft_putstr(tetstr);
+	ft_putchar('\n');
+	get_x_coord(tetstr);
 	return (0);
 }
 
@@ -72,7 +112,7 @@ int				main(int ac, char **av)
 	tetris	*my_tetris;
 
 	if (ac == 2)
-		ft_putnbr(get_tet(av[1]));
+		get_tet(av[1]);
 	else
 		ft_putstr("./fillit [should be used this way]\n");
 	ft_putstr("\nFirst print\n");
