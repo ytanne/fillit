@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/14 01:58:42 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/14 02:28:42 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,22 @@ void	dimensions(char	*line, int counter)
 		}
 }
 
-static int		get_tet(char *file_name, tetris **my_tetris, char **tetstr)
+void			another_function(char **tetstr)
+{
+	int		**coords;
+	tetris	*my_tetris;
+
+	my_tetris = NULL;
+	get_x_coord(*tetstr, &coords);
+	my_tetris = tet_new(coords[0], coords[1]);
+	tet_print_coords(my_tetris);
+}
+
+static int		get_tet(char *file_name, char **tetstr)
 {
 	int		fd;
 	char	*line;
 	int		count;
-	int		**coords;
 
 	count = 0;
 	fd = open(file_name, O_RDONLY);
@@ -92,21 +102,18 @@ static int		get_tet(char *file_name, tetris **my_tetris, char **tetstr)
 		{
 			(*tetstr)[5*(count - 1) + 4] = '\0';
 			count = 0;
+			another_function(tetstr);
 		}
 	}
-	get_x_coord(*tetstr, &coords);
-	*my_tetris = tet_new(coords[0], coords[1]);
-	tet_print_coords(*my_tetris);
 	return (0);
 }
 
 int				main(int ac, char **av)
 {
-	tetris	*my_tetris;
 	char	*tetstr;
 
 	if (ac == 2)
-		ft_putnbr(get_tet(av[1], &my_tetris, &tetstr));
+		ft_putnbr(get_tet(av[1], &tetstr));
 	else
 		ft_putstr("./fillit [should be used this way]\n");
 	return (0);
