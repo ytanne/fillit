@@ -6,7 +6,7 @@
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/08 09:39:05 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/12 22:10:21 by yorazaye         ###   ########.fr        #
+#    Updated: 2019/10/14 23:50:43 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,16 @@ all: $(NAME)
 $(NAME):
 	gcc -o $(NAME) $(F_S) -I $(F_I) $(FLAGS)
 
+run:
+	./$(NAME) test_files/test3.fillit
+
+debug:
+	lldb ./$(NAME) test_files/test0.fillit
+
 clean:
 	rm -f $(F_O)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all

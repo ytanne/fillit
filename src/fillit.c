@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/14 02:28:42 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/14 23:51:35 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include "get_next_line.h"
 #include "fillit.h"
 
-void	new_int_arr(int ***coords)
+static void		new_int_arr(int ***coords)
 {
 	(*coords) = ft_memalloc(2);
 	(*coords)[0] = ft_memalloc(4);
 	(*coords)[1] = ft_memalloc(4);
 }
 
-void	get_x_coord(char *line, int ***coords)
+static void		get_x_coord(char *line, int ***coords)
 {
 	int		xy[2];
 	int		j;
@@ -49,7 +49,7 @@ void	get_x_coord(char *line, int ***coords)
 	}
 }
 
-void	dimensions(char	*line, int counter)
+static void		dimensions(char	*line, int counter)
 {
 	static int	max_x = 0;
 	static int	max_y = 0;
@@ -72,28 +72,33 @@ void	dimensions(char	*line, int counter)
 		}
 }
 
-void			another_function(char **tetstr)
+void			tet_init(char **tetstr, t_tetris **my_tetris)
 {
-	int		**coords;
-	tetris	*my_tetris;
+	int			**coords;
 
-	my_tetris = NULL;
 	get_x_coord(*tetstr, &coords);
-	my_tetris = tet_new(coords[0], coords[1]);
-	tet_print_coords(my_tetris);
+	if (!(*my_tetris))
+		*my_tetris = tet_new(coords[0], coords[1]);
+	else
+		tet_add_to_end(my_tetris, tet_new(coords[0], coords[1]));
+	ft_strclr(*tetstr);
 }
 
 static int		get_tet(char *file_name, char **tetstr)
 {
-	int		fd;
-	char	*line;
-	int		count;
+	int			fd;
+	char		*line;
+	int			count;
+	t_tetris	*my_tetris;
 
 	count = 0;
+	my_tetris = NULL;
 	fd = open(file_name, O_RDONLY);
-	*tetstr = ft_strnew(18);
+	*tetstr = ft_strnew(19);
 	while (get_next_line(fd, &line) > 0)
 	{
+		if (ft_strcmp(line, "") == 0)
+			continue ;
 		dimensions(line, count++);
 		ft_strcat(*tetstr, line);
 		if (count < 4)
@@ -102,9 +107,11 @@ static int		get_tet(char *file_name, char **tetstr)
 		{
 			(*tetstr)[5*(count - 1) + 4] = '\0';
 			count = 0;
-			another_function(tetstr);
+			tet_init(tetstr, &my_tetris);
 		}
 	}
+	tet_print_coords(my_tetris);
+	ft_putstr("====================\n");
 	return (0);
 }
 
