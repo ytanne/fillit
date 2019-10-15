@@ -6,29 +6,39 @@
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/08 09:39:05 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/11 12:21:03 by yorazaye         ###   ########.fr        #
+#    Updated: 2019/10/15 11:13:25 by mstupnik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-F_C = $(addsuffix .c, $(NAME))
+SRC = fillit ft_checks tetris_struct
 
-F_O = $(addsuffix .o, $(NAME))
+F_C = $(addsuffix .c, $(SRC))
 
-F_I = libft/includes
+F_O = $(addsuffix .o, $(SRC))
 
-FLAGS = -Wall -Wextra -Werror -L libft -lft -g
+F_S = $(patsubst %, src/%, $(F_C))
+
+F_I = libft/includes -I includes
+
+FLAGS = -Wall -Wextra -Werror -L libft -lft
 
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) src/$(F_C) -I $(F_I) $(FLAGS)
+	gcc -o $(NAME) $(F_S) -I $(F_I) $(FLAGS)
+
+run:
+	./$(NAME) test_files/test3.fillit
+
+debug:
+	lldb ./$(NAME) test_files/test0.fillit
 
 clean:
 	rm -f $(F_O)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all

@@ -6,14 +6,14 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 14:46:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/14 21:27:39 by mstupnik         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:39:34 by mstupnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
 
-int		basic_check(char *line)				//checks for required amount of dots and hashes
+static int		basic_check(char *line)
 {
 	int i;
 	int hash_count;
@@ -40,34 +40,46 @@ int		basic_check(char *line)				//checks for required amount of dots and hashes
 	return (1);
 }
 
-int		shape_check(int *line)					//counts amount of adjacent blocks
+static int		adj_check(int i, char *line)
+{
+	int hash_adj;
+	
+	hash_adj = 0;
+	sum = 0;
+	if (line[i] == '#')
+	{
+		if (line[i + 1] == '#')
+			hash_adj++;
+		if (line[i - 1] == '#')
+			hash_adj++;
+		if (line[i + 5] == '#' && (i + 5 <= 19))
+			hash_adj++;
+		if (line[i - 5] == '#' && (i - 5 >= 0))
+			hash_adj++;
+		if (hash_adj == 0)
+			return (0);
+	}
+	return (hash_adj);
+}
+
+static int		shape_check(char *line)
 {
 	int sum;
-	int hash_adj;
 	int i;
 
 	i = -1;
 	sum = 0;
-	while(line[++i])							//function is too big
-	{
-		hash_adj = 0;
+	while (line[++i])
 		if (line[i] == '#')
-		{
-			if (line[i + 1] == '#')
-				hash_adj++;
-			if (line[i - 1] == '#')
-				hash_adj++;
-			if (line[i + 5] == '#') 			//check for segfault
-				hash_adj++;
-			if (line[i - 5] == '#')
-				hash_adj++;
-			if (hash_adj == 0)
-				return (0);
-			else
-				sum += hash_adj;
-		}
-	}
+			sum += adj_check(i, line);
 	if (sum < 6)
 		return (0);
 	return (1);
+}
+
+int				checker(char *line)
+{
+	if (shape_check(line) && basic_check(line))
+		return (1);
+	return (0);
 }
