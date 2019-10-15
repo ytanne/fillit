@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   combinator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 15:02:00 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/15 14:45:02 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/10/15 13:49:13 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/10/15 14:06:22 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "libft.h"
+#include "fillit.h"
 
-typedef struct	s_tetris
+int		combinator(t_tetris **my_tetris)
 {
-	struct s_tetris	*next;
-	int				x[4];
-	int				y[4];
-}				t_tetris;
+	t_tetris	*ptr;
+	int 		i;
 
-int				ft_file_check(int counter, char *line);
-t_tetris		*tet_new(int *x, int *y);
-void			tet_add_to_end(t_tetris **my_tetris, t_tetris *part);
-void			tet_print_coords(t_tetris *my_tetris);
-void		tet_print_gui(t_tetris *s_t, int dimensions, char cc);
+	ptr = *my_tetris;
+	tet_move_hor(&ptr, "left");
+	tet_move_ver(&ptr, "up");
+	tet_print_coords(ptr);
+}
 
-#endif
+int		main
