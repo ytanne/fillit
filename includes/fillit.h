@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 15:02:00 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 08:32:57 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:14:17 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void			tet_add_to_end(t_tetris **my_tetris, t_tetris *part);
 void			tet_print_coords(t_tetris *my_tetris);
 void			tet_print_gui(t_tetris *s_t, int dimensions, char cc);
 void			tet_ipos(t_tetris **my_tetris);
+int				tet_move_hor(t_tetris **my_tetris, char *lefrig);
+int				tet_move_ver(t_tetris **my_tetris, char *updo);
 
 #endif

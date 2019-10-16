@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 13:49:13 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 11:10:15 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:03:58 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,27 @@ int		backtrack(t_tetris *te, char ***res, int *i, char ch)
 		if ((*res)[te->y[*i]][te->x[*i]] == '.')
 			(*res)[te->y[*i]][te->x[*i]] = ch;
 		else
+		{
+			(*i)--;
 			return (0);
+		}
 		if (backtrack(te, res, i, ch) == 1)
 			return (1);
 		(*res)[te->y[*i]][te->x[*i]] = '.';
 	}
+	return (0);
+}
+
+int		iterate_pos(t_tetris **te, char ***res, char ch)
+{
+	int		i;
+
+	i = -1;
+	if (backtrack(*te, res, &i, ch))
+		return (1);
+	else
+		if (tet_move_hor(te, "right") == 1)
+			iterate_pos(te, res, ch);
 	return (0);
 }
 
@@ -67,7 +83,7 @@ int		combinator(t_tetris *my_tetris)
 	char		**res;
 	int			i;
 	t_tetris	*tut;
-	int			x1[4] = {3, 3, 3, 3};
+	int			x1[4] = {0, 0, 0, 0};
 	int			y2[4] = {0, 1, 2, 3};
 
 	tut = tet_new(x1, y2);
@@ -75,8 +91,15 @@ int		combinator(t_tetris *my_tetris)
 	fill_with_dots(&res, 4);
 	backtrack(my_tetris, &res, &i, 'A');
 	ft_putstr("++++++++++\n");
-	i = -1;
+	/*i = -1;
 	backtrack(tut, &res, &i, 'B');
+	i = -1;
+	while (++i < 4)
+	{
+		ft_putstr(res[i]);
+		ft_putchar('\n');
+	}*/
+	iterate_pos(&tut, &res, 'B');
 	return (1);
 }
 
