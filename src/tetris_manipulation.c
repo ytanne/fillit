@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 00:01:04 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/15 15:36:01 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 08:35:22 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,19 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown)
 		if (maxmin[3] > 0)
 			while (++i < 4)
 				(*my_tetris)->y[i]--;
+		else
+			return (-1);
 	}
 	if (!ft_strcmp(updown, "down"))
+	{
 		if (maxmin[1] < 3)
 			while (++i < 4)
 				(*my_tetris)->y[i]++;
+		else
+			return (-1);
+	}
 	ft_memdel((void **)&maxmin);
-	return (0);
+	return (1);
 }
 
 int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
@@ -71,15 +77,42 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
 		if (maxmin[2] > 0)
 			while (++i < 4)
 				(*my_tetris)->x[i]--;
+		else
+			return (-1);
 	}
 	if (!ft_strcmp(lefrig, "right"))
+	{
 		if (maxmin[0] < 3)
 			while (++i < 4)
 				(*my_tetris)->x[i]++;
+		else
+			return (-1);
+	}
 	ft_memdel((void **)&maxmin);
-	return (0);
+	return (1);
 }
 
+void			tet_ipos(t_tetris **my_tetris)
+{
+	while (tet_move_hor(my_tetris, "left") == 1)
+		;
+	while (tet_move_ver(my_tetris, "up") == 1)
+		;
+}
+/* Tested function for deleting whole tetris list
+void			tet_del(t_tetris **my_tetris)d
+{
+	t_tetris	*tmp;
+
+	while (*my_tetris)
+	{
+		tmp = *my_tetris;
+		ft_memdel((void **)&(*my_tetris));
+		*my_tetris = tmp->next;
+	}
+}
+*/
+/*
 int		main(void)
 {
 	t_tetris	*my_tetris;
@@ -90,13 +123,13 @@ int		main(void)
 	tet_print_coords(my_tetris);
 	tet_print_gui(my_tetris, 4, '#');
 	ft_putstr("=======\n");
-	tet_move_hor(&my_tetris, "left");
+	tet_ipos(&my_tetris);
 	tet_print_coords(my_tetris);
 	tet_print_gui(my_tetris, 4, '#');
 	ft_putstr("=======\n");
-	tet_move_ver(&my_tetris, "up");
+	tet_ipos(&my_tetris);
 	tet_print_coords(my_tetris);
 	tet_print_gui(my_tetris, 4, '#');
 	ft_putstr("=======\n");
 	return (0);
-}
+}*/
