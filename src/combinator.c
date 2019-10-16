@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 13:49:13 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 16:03:58 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:24:58 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,26 @@ int		backtrack(t_tetris *te, char ***res, int *i, char ch)
 int		iterate_pos(t_tetris **te, char ***res, char ch)
 {
 	int		i;
+	int		counter;
 
 	i = -1;
 	if (backtrack(*te, res, &i, ch))
 		return (1);
 	else
+	{
 		if (tet_move_hor(te, "right") == 1)
+		{
+			counter++;
 			iterate_pos(te, res, ch);
+		}
+		else
+		{
+			while (counter-- > 0)
+				tet_move_hor(te, "left");
+			if (tet_move_ver(te, "down") == 1)
+				iterate_pos(te, res, ch);
+		}
+	}
 	return (0);
 }
 
@@ -83,10 +96,14 @@ int		combinator(t_tetris *my_tetris)
 	char		**res;
 	int			i;
 	t_tetris	*tut;
-	int			x1[4] = {0, 0, 0, 0};
-	int			y2[4] = {0, 1, 2, 3};
+	t_tetris	*tut2;
+	//int			x1[4] = {0, 0, 0, 0};
+	//int			y2[4] = {0, 1, 2, 3};
+	int			x1[4] = {0, 1, 2, 3};
+	int			y2[4] = {0, 0, 0, 0};
 
 	tut = tet_new(x1, y2);
+	tut2 = tet_new(x1, y2);
 	i = -1;
 	fill_with_dots(&res, 4);
 	backtrack(my_tetris, &res, &i, 'A');
@@ -100,6 +117,16 @@ int		combinator(t_tetris *my_tetris)
 		ft_putchar('\n');
 	}*/
 	iterate_pos(&tut, &res, 'B');
+	ft_putstr("++++++++++\n");
+	iterate_pos(&tut2, &res, 'C');
+	ft_putstr("++++++++++\n");
+	iterate_pos(&tut2, &res, 'D');
+	i = -1;
+	while (++i < 4)
+	{
+		ft_putstr(res[i]);
+		ft_putchar('\n');
+	}
 	return (1);
 }
 
