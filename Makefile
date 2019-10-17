@@ -6,7 +6,7 @@
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/08 09:39:05 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/16 17:56:31 by yorazaye         ###   ########.fr        #
+#    Updated: 2019/10/16 18:06:40 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,6 @@ clean:
 	rm -f $(F_O)
 
 fclean: clean
-	rm -rf $(NAME) $(NAME).dSYM
+	rm -rf $(NAME)
 
 re: fclean all

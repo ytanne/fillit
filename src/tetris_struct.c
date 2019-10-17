@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 21:49:19 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/14 21:19:10 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 18:06:01 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,36 @@ void			tet_print_coords(t_tetris *some_tetris)
 		if (my_tetris->next)
 			ft_putstr("------------\n");
 		my_tetris = my_tetris->next;
+	}
+}
+
+static int	int_com(int *a, int	*b, int c, int d)
+{
+	int		i;
+
+	i = -1;
+	while (++i < 4)
+		if (a[i] == c && b[i] == d)
+			return (1);
+	return (0);
+}
+
+void		tet_print_gui(t_tetris *s_t, int dimensions, char cc)
+{
+	int		x;
+	int		y;
+
+	y = -1;
+	while (++y < dimensions)
+	{
+		x = -1;
+		while (++x < dimensions)
+		{
+			if (int_com(s_t->x, s_t->y, x, y))
+				ft_putchar(cc);
+			else
+				ft_putchar('.');
+		}
+		ft_putchar('\n');
 	}
 }
