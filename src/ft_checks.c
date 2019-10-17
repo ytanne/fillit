@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 14:46:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 18:39:05 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 19:21:24 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ static int		get_tet(char *file_name, char **tetstr)
 			ft_putstr("Checker result: ");
 			ft_putnbr(checker(*tetstr));
 			ft_putchar('\n');
+			ft_strclr(*tetstr);
 		}
 		else if (count == 4 && ft_strcmp(line, "") == 0)
 			count = -1;
