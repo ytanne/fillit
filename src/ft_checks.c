@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 14:46:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/15 15:39:34 by mstupnik         ###   ########.fr       */
+/*   Updated: 2019/10/16 17:28:48 by mstupnik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int		adj_check(int i, char *line)
 	int hash_adj;
 	
 	hash_adj = 0;
-	sum = 0;
 	if (line[i] == '#')
 	{
 		if (line[i + 1] == '#')
