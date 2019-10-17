@@ -6,12 +6,13 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 14:46:17 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 18:00:52 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/16 18:39:05 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
+#include "fillit.h"
 
 static int		basic_check(char *line)
 {
@@ -80,5 +81,49 @@ int				checker(char *line)
 {
 	if (shape_check(line) && basic_check(line))
 		return (1);
+	return (0);
+}
+
+static int		get_tet(char *file_name, char **tetstr)
+{
+	int			fd;
+	char		*line;
+	int			count;
+	t_tetris	*my_tetris;
+
+	count = -1;
+	my_tetris = NULL;
+	fd = open(file_name, O_RDONLY);
+	*tetstr = ft_strnew(19);
+	while (get_next_line(fd, &line) > 0)
+	{
+		++count;
+		if (count < 3)
+		{
+			ft_strcat(*tetstr, line);
+			(*tetstr)[5*count + 4] = '\n';
+		}
+		else if (count == 3)
+		{
+			ft_strcat(*tetstr, line);
+			(*tetstr)[5*count + 4] = '\0';
+			ft_putstr("Checker result: ");
+			ft_putnbr(checker(*tetstr));
+			ft_putchar('\n');
+		}
+		else if (count == 4 && ft_strcmp(line, "") == 0)
+			count = -1;
+	}
+	return (0);
+}
+
+int				main(int ac, char **av)
+{
+	char	*tetstr;
+
+	if (ac == 2)
+		ft_putnbr(get_tet(av[1], &tetstr));
+	else
+		ft_putstr("./fillit [should be used this way]\n");
 	return (0);
 }
