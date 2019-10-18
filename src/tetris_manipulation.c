@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 00:01:04 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 18:03:44 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/17 16:19:02 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown)
 	int			i;
 	
 	maxmin = ft_memalloc(4);
-	i = -1;
 	get_maxmin((*my_tetris)->x, (*my_tetris)->y, &maxmin);
-	if (!ft_strcmp(updown, "up"))
+	if ((i = -1) && !ft_strcmp(updown, "up"))
 	{
 		if (maxmin[3] > 0)
 			while (++i < 4)
@@ -52,7 +51,7 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown)
 		else
 			return (-1);
 	}
-	if (!ft_strcmp(updown, "down"))
+	if ((i = -1) && !ft_strcmp(updown, "down"))
 	{
 		if (maxmin[1] < 3)
 			while (++i < 4)
@@ -70,9 +69,8 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
 	int			i;
 	
 	maxmin = ft_memalloc(4);
-	i = -1;
 	get_maxmin((*my_tetris)->x, (*my_tetris)->y, &maxmin);
-	if (!ft_strcmp(lefrig, "left"))
+	if ((i = -1) && !ft_strcmp(lefrig, "left"))
 	{
 		if (maxmin[2] > 0)
 			while (++i < 4)
@@ -80,7 +78,7 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
 		else
 			return (-1);
 	}
-	if (!ft_strcmp(lefrig, "right"))
+	if ((i = -1) && !ft_strcmp(lefrig, "right"))
 	{
 		if (maxmin[0] < 3)
 			while (++i < 4)
