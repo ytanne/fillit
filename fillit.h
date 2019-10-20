@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 15:02:00 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/16 18:04:31 by yorazaye         ###   ########.fr       */
+/*   Created: 2019/10/19 19:37:21 by yorazaye          #+#    #+#             */
+/*   Updated: 2019/10/20 13:34:23 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 typedef struct	s_tetris
 {
-	struct s_tetris	*next;
 	int				x[4];
 	int				y[4];
+	char			letter;
+	struct s_tetris	*next;
+	struct s_tetris	*prev;
 }				t_tetris;
 
-int				ft_file_check(int counter, char *line);
-t_tetris		*tet_new(int *x, int *y);
-void			tet_add_to_end(t_tetris **my_tetris, t_tetris *part);
-void			tet_print_coords(t_tetris *my_tetris);
-void			tet_print_gui(t_tetris *s_t, int dimensions, char cc);
-void			tet_ipos(t_tetris **my_tetris);
-int				tet_move_hor(t_tetris **my_tetris, char *lefrig);
-int				tet_move_ver(t_tetris **my_tetris, char *updo);
+t_tetris		*ft_tetris_new(int *x, int *y, char letter);
+void			ft_tet_to_end(t_tetris **my_tetris, t_tetris *part);
+void			ft_print_tet(t_tetris *s_t, int dimensions);
+void			tet_ipos(t_tetris *my_tetris, int size);
+int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size);
+int				tet_move_ver(t_tetris **my_tetris, char *updown, int size);
+char			**create_field(int n);
+void			print_field(char **field, int n);
+void			delete_field(char ***field, int n);
 
 #endif

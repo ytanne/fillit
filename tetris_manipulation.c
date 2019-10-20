@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 00:01:04 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/17 16:19:02 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/20 14:26:22 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		get_maxmin(int *x, int *y, int **maxmin)
 	}
 }
 
-int				tet_move_ver(t_tetris **my_tetris, char *updown)
+int				tet_move_ver(t_tetris **my_tetris, char *updown, int size)
 {
 	int			*maxmin;
 	int			i;
@@ -53,7 +53,7 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown)
 	}
 	if ((i = -1) && !ft_strcmp(updown, "down"))
 	{
-		if (maxmin[1] < 3)
+		if (maxmin[1] < size - 1)
 			while (++i < 4)
 				(*my_tetris)->y[i]++;
 		else
@@ -63,7 +63,7 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown)
 	return (1);
 }
 
-int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
+int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size)
 {
 	int			*maxmin;
 	int			i;
@@ -80,7 +80,7 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
 	}
 	if ((i = -1) && !ft_strcmp(lefrig, "right"))
 	{
-		if (maxmin[0] < 3)
+		if (maxmin[0] < size - 1)
 			while (++i < 4)
 				(*my_tetris)->x[i]++;
 		else
@@ -90,44 +90,14 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig)
 	return (1);
 }
 
-void			tet_ipos(t_tetris **my_tetris)
+void			tet_ipos(t_tetris *my_tetris, int size)
 {
-	while (tet_move_hor(my_tetris, "left") == 1)
-		;
-	while (tet_move_ver(my_tetris, "up") == 1)
-		;
+//	while (my_tetris)
+//	{
+		while (tet_move_hor(&my_tetris, "left", size) == 1)
+			;
+		while (tet_move_ver(&my_tetris, "up", size) == 1)
+			;
+//		my_tetris = my_tetris->next;
+//	}
 }
-/* Tested function for deleting whole tetris list
-void			tet_del(t_tetris **my_tetris)d
-{
-	t_tetris	*tmp;
-
-	while (*my_tetris)
-	{
-		tmp = *my_tetris;
-		ft_memdel((void **)&(*my_tetris));
-		*my_tetris = tmp->next;
-	}
-}
-*/
-/*
-int		main(void)
-{
-	t_tetris	*my_tetris;
-	int			x[4] = {2, 3, 1, 2};
-	int			y[4] = {1, 1, 2, 2};
-
-	my_tetris = tet_new(x, y);
-	tet_print_coords(my_tetris);
-	tet_print_gui(my_tetris, 4, '#');
-	ft_putstr("=======\n");
-	tet_ipos(&my_tetris);
-	tet_print_coords(my_tetris);
-	tet_print_gui(my_tetris, 4, '#');
-	ft_putstr("=======\n");
-	tet_ipos(&my_tetris);
-	tet_print_coords(my_tetris);
-	tet_print_gui(my_tetris, 4, '#');
-	ft_putstr("=======\n");
-	return (0);
-}*/
