@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 00:01:04 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/20 14:26:22 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/20 17:28:39 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void		get_maxmin(int *x, int *y, int **maxmin)
 {
 	int			i;
 
-	(*maxmin)[0] = 0; //x max
-	(*maxmin)[1] = 0; //y max
-	(*maxmin)[2] = 4; //x min
-	(*maxmin)[3] = 4; //y min
+	(*maxmin)[0] = 0;
+	(*maxmin)[1] = 0;
+	(*maxmin)[2] = 4;
+	(*maxmin)[3] = 4;
 	i = -1;
 	while (++i < 4)
 	{
@@ -40,7 +40,7 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown, int size)
 {
 	int			*maxmin;
 	int			i;
-	
+
 	maxmin = ft_memalloc(4);
 	get_maxmin((*my_tetris)->x, (*my_tetris)->y, &maxmin);
 	if ((i = -1) && !ft_strcmp(updown, "up"))
@@ -67,7 +67,7 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size)
 {
 	int			*maxmin;
 	int			i;
-	
+
 	maxmin = ft_memalloc(4);
 	get_maxmin((*my_tetris)->x, (*my_tetris)->y, &maxmin);
 	if ((i = -1) && !ft_strcmp(lefrig, "left"))
@@ -92,12 +92,8 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size)
 
 void			tet_ipos(t_tetris *my_tetris, int size)
 {
-//	while (my_tetris)
-//	{
-		while (tet_move_hor(&my_tetris, "left", size) == 1)
-			;
-		while (tet_move_ver(&my_tetris, "up", size) == 1)
-			;
-//		my_tetris = my_tetris->next;
-//	}
+	while (tet_move_hor(&my_tetris, "left", size) == 1)
+		;
+	while (tet_move_ver(&my_tetris, "up", size) == 1)
+		;
 }

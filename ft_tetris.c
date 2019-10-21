@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:39:55 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/19 20:32:02 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/20 17:39:33 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_tetris	*ft_tetris_new(int *x, int *y, char letter)
 	return (tet);
 }
 
-void			ft_tet_to_end(t_tetris **my_tetris, t_tetris *part)
+void		ft_tet_to_end(t_tetris **my_tetris, t_tetris *part)
 {
 	t_tetris	*ptr;
 

@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:37:30 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/20 14:47:05 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/20 17:26:28 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		print_field(char **field, int n)
 	}
 }
 
-void		delete_field(char	***field, int n)
+void		delete_field(char ***field, int n)
 {
 	int		i;
 	char	*ptr;
