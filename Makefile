@@ -6,11 +6,11 @@
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/19 20:02:52 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/22 15:17:56 by mstupnik         ###   ########.fr        #
+#    Updated: 2019/10/22 15:26:13 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test
+NAME = fillit
 
 F = ft_backtrack ft_tetris tetris_manipulation additional ft_checks fillit
 
@@ -31,6 +31,6 @@ clean:
 	rm -f $(F_O)
 
 fclean: clean
-	rm -rf $(NAME) $(NAME).dSYM
+	rm -rf $(NAME)
 
 re: fclean all
