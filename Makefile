@@ -5,40 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/08 09:39:05 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/16 18:06:40 by yorazaye         ###   ########.fr        #
+#    Created: 2019/10/19 20:02:52 by yorazaye          #+#    #+#              #
+#    Updated: 2019/10/22 15:17:56 by mstupnik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME = test
 
-SRC = fillit ft_checks tetris_struct
+F = ft_backtrack ft_tetris tetris_manipulation additional ft_checks fillit
 
-F_C = $(addsuffix .c, $(SRC))
+F_C = $(addsuffix .c, $(F))
 
-F_O = $(addsuffix .o, $(SRC))
+F_O = $(addsuffix .o, $(F))
 
-F_S = $(patsubst %, src/%, $(F_C))
+I1 = libft/includes
 
-F_I = libft/includes -I includes
-
-FLAGS = -Wall -Wextra -Werror -L libft -lft
+I2 = fillit.h
 
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(F_S) -I $(F_I) $(FLAGS)
-
-run:
-	./$(NAME) test_files/test3.fillit
-
-debug:
-	lldb ./$(NAME) test_files/test0.fillit
+	gcc -o $(NAME) $(F_C) -I $(I2) -I $(I1) -L libft -lft
 
 clean:
 	rm -f $(F_O)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(NAME).dSYM
 
 re: fclean all
