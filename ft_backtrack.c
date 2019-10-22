@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:56:48 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/20 17:54:56 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:29:35 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,20 @@ static int	start_pls(t_tetris *t, char **field, int n)
 
 void		field_init(t_tetris *t)
 {
-	char	**field;
-	int		n;
-	int		solved;
-	int		i;
+	char		**field;
+	int			n;
+	int			solved;
+	int			i;
+	t_tetris	*ptr;
 
 	n = 4;
 	solved = 0;
+	ptr = t;
+	while (ptr)
+	{
+		tet_ipos(ptr, 4);
+		ptr = ptr->next;
+	}
 	while (solved == 0)
 	{
 		field = create_field(n);
@@ -121,58 +128,3 @@ void		field_init(t_tetris *t)
 			n++;
 	}
 }
-/*
-**int			main(void)
-**{
-**	t_tetris	*my_tetris0;
-**	t_tetris	*my_tetris1;
-**	t_tetris	*my_tetris2;
-**	t_tetris	*my_tetris3;
-**	t_tetris	*my_tetris4;
-**	t_tetris	*my_tetris5;
-**	t_tetris	*my_tetris6;
-**	t_tetris	*my_tetris7;
-**	t_tetris	*t;
-**
-**	int			x[4] = {3, 3, 3, 3};
-**	int			y[4] = {0, 1, 2, 3};
-**	int			x1[4] = {0, 1, 2, 3};
-**	int			y1[4] = {3, 3, 3, 3};
-**	int			x2[4] = {1, 2, 3, 3};
-**	int			y2[4] = {0, 0, 0, 1};
-**	int			x3[4] = {2, 3, 1, 2};
-**	int			y3[4] = {1, 1, 2, 2};
-**	int			x4[4] = {1, 2, 1, 2};
-**	int			y4[4] = {1, 1, 2, 2};
-**	int			x5[4] = {0, 1, 1, 2};
-**	int			y5[4] = {2, 2, 3, 3};
-**	int			x6[4] = {0, 1, 1, 1};
-**	int			y6[4] = {0, 0, 1, 2};
-**	int			x7[4] = {0, 1, 2, 1};
-**	int			y7[4] = {1, 1, 1, 2};
-**
-**	my_tetris0 = ft_tetris_new(x, y, 'A');
-**	my_tetris1 = ft_tetris_new(x1, y1, 'B');
-**	my_tetris2 = ft_tetris_new(x2, y2, 'C');
-**	my_tetris3 = ft_tetris_new(x3, y3, 'D');
-**	my_tetris4 = ft_tetris_new(x4, y4, 'E');
-**	my_tetris5 = ft_tetris_new(x5, y5, 'F');
-**	my_tetris6 = ft_tetris_new(x6, y6, 'G');
-**	my_tetris7 = ft_tetris_new(x7, y7, 'H');
-**	ft_tet_to_end(&my_tetris0, my_tetris1);
-**	ft_tet_to_end(&my_tetris0, my_tetris2);
-**	ft_tet_to_end(&my_tetris0, my_tetris3);
-**	ft_tet_to_end(&my_tetris0, my_tetris4);
-**	ft_tet_to_end(&my_tetris0, my_tetris5);
-**	ft_tet_to_end(&my_tetris0, my_tetris6);
-**	ft_tet_to_end(&my_tetris0, my_tetris7);
-**	t = my_tetris0;
-**	while (t)
-**	{
-**		tet_ipos(t, 4);
-**		t = t->next;
-**	}
-**	field_init(my_tetris0);
-**	return (0);
-**}
-*/

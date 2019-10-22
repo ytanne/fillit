@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:37:21 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/20 13:34:23 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:33:32 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,9 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown, int size);
 char			**create_field(int n);
 void			print_field(char **field, int n);
 void			delete_field(char ***field, int n);
+int				checker(char *line);
+void			field_init(t_tetris *t);
+void			new_int_arr(int ***coords);
+void			get_x_coord(char *line, int ***coords);
 
 #endif

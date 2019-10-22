@@ -6,7 +6,7 @@
 #    By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/16 21:08:37 by yorazaye          #+#    #+#              #
-#    Updated: 2019/10/10 14:33:18 by yorazaye         ###   ########.fr        #
+#    Updated: 2019/10/22 16:01:34 by yorazaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ FT_O = ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_memcmp.o\
 	   ft_btree_new_node.o ft_btree_apply_pr.o ft_btree_apply_in.o\
 	   ft_btree_apply_sf.o ft_print_bits.o get_next_line.o
 NAME = libft.a
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
