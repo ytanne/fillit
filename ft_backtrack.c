@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:56:48 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 15:29:35 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/22 18:27:05 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		field_init(t_tetris *t)
 	int			i;
 	t_tetris	*ptr;
 
-	n = 4;
+	//n = 3;
 	solved = 0;
 	ptr = t;
 	while (ptr)
@@ -118,6 +118,7 @@ void		field_init(t_tetris *t)
 		tet_ipos(ptr, 4);
 		ptr = ptr->next;
 	}
+	n = tet_getmax(t) + 1;
 	while (solved == 0)
 	{
 		field = create_field(n);

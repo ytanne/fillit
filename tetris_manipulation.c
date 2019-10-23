@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 00:01:04 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 15:28:06 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:53:01 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,31 @@ void			tet_ipos(t_tetris *my_tetris, int size)
 		;
 	while (tet_move_ver(&my_tetris, "up", size) == 1)
 		;
+}
+
+int				tet_getmax(t_tetris *my_tetris)
+{
+	t_tetris	*p;
+	int			max_xy[2];
+	int			i;
+
+	max_xy[0] = 0;
+	max_xy[1] = 0;
+	p = my_tetris;
+	while (p)
+	{
+		i = -1;
+		while (++i < 4)
+		{
+			if (p->x[i] > max_xy[0])
+				max_xy[0] = p->x[i];
+			if (p->y[i] > max_xy[1])
+				max_xy[1] = p->y[i];
+		}
+		p = p->next;
+	}
+	if (max_xy[0] > max_xy[1])
+		return (max_xy[0]);
+	else
+		return (max_xy[1]);
 }

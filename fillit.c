@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 10:09:50 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 15:50:00 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/22 19:04:59 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ static int		create_shape(int fd, char **line, char **shape)
 	return (1);
 }
 
+/*
+ * malloc
+*/
+
 int				shape_filler(char *line, t_tetris **my_tetris,
 		char letter, int fd)
 {
@@ -60,7 +64,7 @@ int				shape_filler(char *line, t_tetris **my_tetris,
 	create_shape(fd, &line, &shape);
 	if (!checker(shape))
 		return (0);
-	tet_init(&shape, my_tetris, letter++);
+	tet_init(&shape, my_tetris, letter++); //First;
 	ft_strdel(&shape);
 	if ((get_next_line(fd, &line) > 0))
 	{
@@ -79,6 +83,7 @@ static int		get_tet(char *file_name, char **tetstr)
 	char		*line;
 	char		letter;
 	t_tetris	*my_tetris;
+	int			size;
 
 	letter = 'A';
 	my_tetris = NULL;
@@ -86,6 +91,7 @@ static int		get_tet(char *file_name, char **tetstr)
 	if (!shape_filler(line, &my_tetris, letter, fd))
 		return (0);
 	field_init(my_tetris);
+	delete_tet(&my_tetris);
 	return (1);
 }
 
