@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:37:21 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/23 21:50:57 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/24 21:04:28 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void			get_x_coord(char *line, int ***coords);
 int				tet_getmax(t_tetris *my_tetris);
 void			delete_tet(t_tetris **tetris);
 void			ft_intdel(int ***coords);
+int				init_size_pose(t_tetris **t);
 
 #endif

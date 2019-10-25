@@ -6,13 +6,14 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:56:48 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/24 17:21:03 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/24 21:29:05 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static int	insert_tetris(t_tetris *te, char ***res, int *i, int n)
 {
@@ -105,26 +106,24 @@ static int	start_pls(t_tetris *t, char **field, int n)
 void		field_init(t_tetris *t)
 {
 	char		**field;
-	int			n;
+	int			n[3];
 	int			solved;
 	int			i;
-	t_tetris	*ptr;
 
 	solved = 0;
-	ptr = t;
-	while (ptr)
-	{
-		tet_ipos(ptr, 4);
-		ptr = ptr->next;
-	}
-	n = tet_getmax(t) + 1;
+	n[0] = init_size_pose(&t);
+	n[1] = tet_getmax(t) + 1;
+	if (n[0] < n[1])
+		n[2] = n[1];
+	else
+		n[2] = n[0];
 	while (solved == 0)
 	{
-		field = create_field(n);
-		if ((solved = start_pls(t, field, n)))
-			print_field(field, n);
-		delete_field(&field, n);
+		field = create_field(n[2]);
+		if ((solved = start_pls(t, field, n[2])))
+			print_field(field, n[2]);
+		delete_field(&field, n[2]);
 		if (solved == 0)
-			n++;
+			n[2]++;
 	}
 }

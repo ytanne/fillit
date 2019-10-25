@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 18:19:43 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/23 21:02:48 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/24 21:30:15 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,17 @@ void	ft_intdel(int ***coords)
 	ft_memdel((void **)(&(*coords)[0]));
 	ft_memdel((void **)(&(*coords)[1]));
 	ft_memdel((void **)(*coords));
+}
+
+void	delete_field(char ***field, int n)
+{
+	int		i;
+
+	i = -1;
+	while (++i < n)
+	{
+		ft_memdel((void **)&(*field)[i]);
+	}
+	free(*field);
+	field = NULL;
 }
