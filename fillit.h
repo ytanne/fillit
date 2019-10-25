@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:37:21 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 18:28:21 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/23 21:50:57 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct	s_tetris
 {
-	int				x[4];
-	int				y[4];
+	int				*x;
+	int				*y;
 	char			letter;
 	struct s_tetris	*next;
 	struct s_tetris	*prev;
@@ -37,5 +37,6 @@ void			new_int_arr(int ***coords);
 void			get_x_coord(char *line, int ***coords);
 int				tet_getmax(t_tetris *my_tetris);
 void			delete_tet(t_tetris **tetris);
+void			ft_intdel(int ***coords);
 
 #endif

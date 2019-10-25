@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:56:48 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 18:27:05 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/24 17:21:03 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void		field_init(t_tetris *t)
 	int			i;
 	t_tetris	*ptr;
 
-	//n = 3;
 	solved = 0;
 	ptr = t;
 	while (ptr)

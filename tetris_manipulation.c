@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 00:01:04 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 17:53:01 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/24 15:08:11 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown, int size)
 {
 	int			*maxmin;
 	int			i;
+	int			r;
 
+	r = 1;
 	maxmin = ft_memalloc(4);
 	get_maxmin((*my_tetris)->x, (*my_tetris)->y, &maxmin);
 	if ((i = -1) && !ft_strcmp(updown, "up"))
@@ -49,7 +51,7 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown, int size)
 			while (++i < 4)
 				(*my_tetris)->y[i]--;
 		else
-			return (-1);
+			r = -1;
 	}
 	if ((i = -1) && !ft_strcmp(updown, "down"))
 	{
@@ -57,17 +59,19 @@ int				tet_move_ver(t_tetris **my_tetris, char *updown, int size)
 			while (++i < 4)
 				(*my_tetris)->y[i]++;
 		else
-			return (-1);
+			r = -1;
 	}
 	ft_memdel((void **)&maxmin);
-	return (1);
+	return (r);
 }
 
 int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size)
 {
 	int			*maxmin;
 	int			i;
+	int			r;
 
+	r = 1;
 	maxmin = ft_memalloc(4);
 	get_maxmin((*my_tetris)->x, (*my_tetris)->y, &maxmin);
 	if ((i = -1) && !ft_strcmp(lefrig, "left"))
@@ -76,7 +80,7 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size)
 			while (++i < 4)
 				(*my_tetris)->x[i]--;
 		else
-			return (-1);
+			r = -1;
 	}
 	if ((i = -1) && !ft_strcmp(lefrig, "right"))
 	{
@@ -84,10 +88,10 @@ int				tet_move_hor(t_tetris **my_tetris, char *lefrig, int size)
 			while (++i < 4)
 				(*my_tetris)->x[i]++;
 		else
-			return (-1);
+			r = -1;
 	}
 	ft_memdel((void **)&maxmin);
-	return (1);
+	return (r);
 }
 
 void			tet_ipos(t_tetris *my_tetris, int size)

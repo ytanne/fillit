@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 20:37:30 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 15:33:54 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/24 17:21:44 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ void		print_field(char **field, int n)
 void		delete_field(char ***field, int n)
 {
 	int		i;
-	char	*ptr;
 
 	i = -1;
 	while (++i < n)
 	{
-		ft_strdel(&(*field)[i]);
+		ft_memdel((void **)&(*field)[i]);
 	}
-	*field = NULL;
+	free(*field);
+	field = NULL;
 }

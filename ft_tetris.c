@@ -6,7 +6,7 @@
 /*   By: yorazaye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 19:39:55 by yorazaye          #+#    #+#             */
-/*   Updated: 2019/10/22 19:05:30 by yorazaye         ###   ########.fr       */
+/*   Updated: 2019/10/23 14:25:31 by yorazaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ t_tetris	*ft_tetris_new(int *x, int *y, char letter)
 	if (!(tet = (t_tetris *)malloc(sizeof(t_tetris))))
 		return (NULL);
 	if (!x || !y)
+		return (NULL);
+	if (!(tet->x = (int *)malloc(sizeof(int) * 4)))
+		return (NULL);
+	if (!(tet->y = (int *)malloc(sizeof(int) * 4)))
 		return (NULL);
 	while (++i < 4)
 	{
