@@ -60,7 +60,7 @@ That will give us following output:
 <img src="https://github.com/ytanne/fillit/blob/master/example.png" width="400" height="200"/>
 
 # Authors and acknowledgment
-I would not be able to finish this project without ![Misha](https://github.com/lisov1y). Big thanks for the collaboration!
+I would not be able to finish this project without [Misha](https://github.com/lisov1y). Big thanks for the collaboration!
 
 # Comments
 
