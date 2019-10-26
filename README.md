@@ -57,7 +57,7 @@ Then pass this file as a standard input to the obtained executable:
 
 That will give us following output:
 
-<img src="https://github.com/ytanne/fillit/blob/master/example.png" width="200" height="400"/>
+<img src="https://github.com/ytanne/fillit/blob/master/example.png" width="400" height="200"/>
 
 # Authors and acknowledgment
 I would not be able to finish this project without ![Misha](https://github.com/lisov1y). Big thanks for the collaboration!
