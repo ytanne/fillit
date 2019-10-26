@@ -3,7 +3,9 @@ This is the story of a piece of Tetris, one little square and a dev walk into a 
 
 # Description
 This is a project about developing an algorithm that will fit tetriminoes provided as an input to the smallest possible square in shortest amount of time. Tetriminoes are the object pieces from well-know game "Tetris".
+
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/All_5_free_tetrominoes.svg/200px-All_5_free_tetrominoes.svg.png)
+
 In this project, a student will learn how to solve recurring problems (finding an optimal solution among many other possibilites). It is also great opportnunity to practice data structure implementation in practice.
 
 # Installation
@@ -51,4 +53,4 @@ I would not be able to finish this project without ![Misha](https://github.com/l
 # Comments
 
 I really enjoy Mr. Robot TV show !
-![](https://i.imgur.com/e5MGWSa.jpg)
+<img src="https://i.imgur.com/e5MGWSa.jpg" width="300" height="300"/>
