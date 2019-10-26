@@ -21,7 +21,7 @@ git clone https://github.com/ytanne/fillit.git fillit
 Run make to get fillit executable.
 
 ```
-cd libft && make && make clean
+cd fillit && make && make clean
 ```
 
 # Usage
